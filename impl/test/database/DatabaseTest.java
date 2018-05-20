@@ -67,7 +67,7 @@ public class DatabaseTest {
         DBInterface dbintf = new DBInterface();
         
         ArrayList<Integer> pks = new ArrayList<Integer>();
-        assertEquals(false, dbintf.adicionar_dieta("NaoTem", pks));
+        assertEquals(-1, dbintf.adicionar_dieta("NaoTem", pks));
         
     }
  
