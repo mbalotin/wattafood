@@ -48,6 +48,15 @@ public class DBInterface {
         return alim.getPK();
     }
 
+    public synchronized int get_alimento(String nome){
+        Alimento a  = find_alimento(nome);
+        if (a == null){
+            return -1;
+        } else {
+            return a.getPK();
+        }
+    }
+
     public synchronized void remover_alimento(String nome){
         for (Refeicao r: refeicoes){
             r.removeAlimento(nome);

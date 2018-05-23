@@ -807,9 +807,16 @@ public class Janela extends javax.swing.JFrame {
         }
 
         // ver se ja tem
-        int pk = dbintf.adicionar_alimento(alim_label);
+        int pk = dbintf.get_alimento(alim_label);
+
         if (pk == -1){
-            return;
+            // nao tem, adiciona
+            pk = dbintf.adicionar_alimento(alim_label);
+            if (pk == -1){
+                // falhou adicionar. socorro...
+                System.out.println("Falhou adicionar alimento. Irrecuperavel.");
+                return;
+            }
         }
 
         ArrayList<Integer> pks_alim = new ArrayList<Integer>();
