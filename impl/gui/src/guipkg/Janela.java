@@ -877,7 +877,6 @@ public class Janela extends javax.swing.JFrame {
                     boolean match = Consulta.alimentos_match(r, rf);
                     String line = "Refeição: " + rf.toString() + " : ";
                     if (match) {
-                        model.addElement("OK");
                         line += "OK";
                     } else {
                         line += "FAIL";
