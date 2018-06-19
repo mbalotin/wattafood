@@ -1,0 +1,11 @@
+
+1) Explique como está sendo realizado o gerenciamento de configuração em seu projeto (responsáveis, ferramenta de suporte).
+
+O gerente é responsável pelo gerenciamento de configuração. Usamos planilhas para acompanhar as tarefas de cada membro para evitar overlap entre tarefas.
+
+2) Pesquise e indique pelo menos duas ferramentas ou ambientes (pode ser proprietário ou livre, desktop ou Web) para suporte ao Gerenciamento de Configuração (que possua as operações básicas explicadas na apresentação sobre Gerenciamento de Configuração).
+Para cada ferramenta ou ambiente, indique o nome e o respectivo endereço Web.
+
+a) Redmine - possui bug tracker, log de release, tracker de tarefas, diversos tipos de gráficos. Ferramentas web. (https://www.redmine.org/)
+
+b) OpenProj - possui diagramas relacionais, grafos de requerimentos (pode ser usados pra modelar passo-a-passo para release). (https://sourceforge.net/projects/openproj/)
