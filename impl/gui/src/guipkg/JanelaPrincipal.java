@@ -5,6 +5,8 @@
  */
 package guipkg;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 15280212
@@ -20,6 +22,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         cadastroalimentopanel = new CadastroAlimentoPanel(sessao);
         cadastronutricionistapainel = new CadastroNutricionistaPainel(sessao);
         cadastropacientespanel = new CadastroPacientesPanel(sessao);
+        cadastrorefeicaopanel = new CadastroRefeicaoPanel(sessao);
         
         initComponents();
     }
@@ -31,6 +34,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private CadastroAlimentoPanel cadastroalimentopanel;
     private CadastroNutricionistaPainel cadastronutricionistapainel;
     private CadastroPacientesPanel cadastropacientespanel;
+    private CadastroRefeicaoPanel cadastrorefeicaopanel;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -179,7 +183,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        if (sessao.usertype == UserType.NONE){
+            JOptionPane.showMessageDialog(null, "Faça login antes", "Login", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        cadastrorefeicaopanel.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
