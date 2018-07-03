@@ -23,6 +23,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         cadastronutricionistapainel = new CadastroNutricionistaPainel(sessao);
         cadastropacientespanel = new CadastroPacientesPanel(sessao);
         cadastrorefeicaopanel = new CadastroRefeicaoPanel(sessao);
+        cadastrodietapanel = new CadastroDietaPanel(sessao);
+        acompanhardietaspanel = new AcompanharDietasPanel(sessao);
         
         initComponents();
     }
@@ -35,6 +37,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private CadastroNutricionistaPainel cadastronutricionistapainel;
     private CadastroPacientesPanel cadastropacientespanel;
     private CadastroRefeicaoPanel cadastrorefeicaopanel;
+    private CadastroDietaPanel cadastrodietapanel;
+    private AcompanharDietasPanel acompanhardietaspanel;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,6 +123,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jMenuItem5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jMenuItem5.setLabel("Acompanhamento de Dietas");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuBar1.add(jMenu2);
@@ -183,15 +192,19 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        if (sessao.usertype == UserType.NONE){
-            JOptionPane.showMessageDialog(null, "Faça login antes", "Login", JOptionPane.INFORMATION_MESSAGE);
+        if (sessao.usertype != UserType.PACIENTE){
+            JOptionPane.showMessageDialog(null, "Faça login como paciente antes", "Login", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         cadastrorefeicaopanel.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        if (sessao.usertype != UserType.NUTRICIONISTA){
+            JOptionPane.showMessageDialog(null, "Faça login como nutricionista antes", "Login", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        cadastrodietapanel.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -209,6 +222,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         cadastropacientespanel.setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        if (sessao.usertype != UserType.NUTRICIONISTA){
+            JOptionPane.showMessageDialog(null, "Faça login como nutricionista antes", "Login", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        acompanhardietaspanel.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
