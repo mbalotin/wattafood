@@ -116,7 +116,15 @@ public class CadastroAlimentoPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
-        // TODO add your handling code here:
+
+        if (jComboBox1.getSelectedItem() == null){
+            return;
+        }
+        String alim = jComboBox1.getSelectedItem().toString();
+        int pk = sessao.dbintf.adicionar_alimento(alim);
+        if (pk > -1){
+            jComboBox1.addItem(alim);
+        }
     }//GEN-LAST:event_btnSalvar1ActionPerformed
 
 

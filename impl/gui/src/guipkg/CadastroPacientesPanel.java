@@ -53,6 +53,7 @@ public class CadastroPacientesPanel extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setEditable(true);
         jComboBox1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
         btnSalvar1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -107,7 +108,16 @@ public class CadastroPacientesPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
-        // TODO add your handling code here:
+
+        if (jComboBox1.getSelectedItem() == null){
+            return;
+        }
+        String nome = jComboBox1.getSelectedItem().toString();
+        int pk = sessao.dbintf.adicionar_paciente(nome);
+        if (pk > -1){
+            jComboBox1.addItem(nome);
+        }
+
     }//GEN-LAST:event_btnSalvar1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
