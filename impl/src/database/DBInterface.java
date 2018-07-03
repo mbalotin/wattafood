@@ -27,13 +27,22 @@ public class DBInterface {
     public synchronized int adicionar_nutricionista(String nome){
         for (Nutricionista n: nutricionistas){
             // nao deixa adicionar repetido
-            if (n.equals(nome)){
+            if (n.getNome().equals(nome)){
                 return -1;
             }
         }
         Nutricionista nutr = new Nutricionista(nome);
         nutricionistas.add(nutr);
         return nutr.getPK();
+    }
+
+    public synchronized int get_nutricionista(String nome){
+        for (Nutricionista n: nutricionistas){
+            if (n.getNome().equals(nome)){
+                return n.getPK();
+            }
+        }
+        return -1;
     }
 
     public synchronized int adicionar_alimento(String nome){
@@ -81,6 +90,15 @@ public class DBInterface {
         return pac.getPK();
     }
 
+   public synchronized int get_paciente(String nome){
+       for (Paciente p: pacientes){
+           if (p.getNome().equals(nome)){
+               return p.getPK();
+           }
+       }
+       return -1;
+   }
+    
     public synchronized boolean adicionar_alimentos_refeicao(int pk, ArrayList<String> lista_alimentos){
         
         Refeicao ref = find_refeicao(pk);

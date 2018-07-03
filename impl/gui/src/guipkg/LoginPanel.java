@@ -5,6 +5,8 @@
  */
 package guipkg;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 15280212
@@ -124,7 +126,31 @@ public class LoginPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+        
+        if (campoUsername.getText() == null){
+            return;
+        }
+        if (campoUsername.getText() == ""){
+            return;
+        }
+
+        String nome = campoUsername.getText();
+
+        int pk_u = sessao.dbintf.get_paciente(nome);
+        int pk_n = sessao.dbintf.get_nutricionista(nome);
+
+        if (pk_u == -1 && pk_n == -1){
+            JOptionPane.showMessageDialog(null, "Usuario inexistente", "Login", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        sessao.username = nome;
+        if (pk_u != -1){
+            sessao.usertype = UserType.PACIENTE;
+        } else  {
+            sessao.usertype = UserType.NUTRICIONISTA;
+        }
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
